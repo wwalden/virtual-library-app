@@ -8,7 +8,26 @@ const userDataMapper = {
     };
     const newUser = await client.query(query);
     return newUser;
+  },
+
+
+
+
+
+  // For testing only
+  async getUserList(){
+    // query à modififer en triant sur un user spécifique
+    const query = {
+      text: `SELECT * FROM "user"`
+    };
+    const userList = await client.query(query);
+    return userList;
   }
+
+
+
+
+
 };
 
 module.exports = userDataMapper;

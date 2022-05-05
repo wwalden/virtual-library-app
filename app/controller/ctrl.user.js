@@ -3,14 +3,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 
-const EMAIL_REGEX     = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-// regex password: at least 8 chars (uppercase AND lowercase), at least one number, at least one special char
-const PASSWORD_REGEX  =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const PASSWORD_REGEX = '';  //à définir
 
 
 const userController = {
 
-  
   async register(req,res) {
     const { email, username, password, firstName, lastName, gender, birthdayDate, bio } = req.body;
 
@@ -21,17 +19,15 @@ const userController = {
       return res.status(401).json({ 'error': 'wrong username (length must be: 6 - 16)' });
     }
     if (!EMAIL_REGEX.test(email)) {
-      return res.status(401).json({ 'error': 'email is not valid' });
+      return res.status(401).json({ 'error': 'invalid email' });
     }
-    if (!PASSWORD_REGEX.test(password)) {
-      return res.status(401).json({ 'error': 'invalid password:  must contain at least 8 chars (uppercase AND lowercase), at least one number, at least one special char)' });
-    }
+    //if (!PASSWORD_REGEX.test(password)) {
+      //return res.status(401).json({ 'error': 'invalid password' });
+    //}
 
     const hash = await bcrypt.hash(req.body.password, 10);
     const newUser = await userDataMapper.registerNewUser(req.body, hash);
     res.send(newUser);
-
-
   },
 
 
