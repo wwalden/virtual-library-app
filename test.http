@@ -1,0 +1,24 @@
+GET http://localhost:4200/api/user/1/media HTTP/1.1
+
+###
+
+POST http://localhost:XXXX/ HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Stalker"
+}
+
+###
+POST http://localhost:4200//api/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "tyler.durden@email.com",
+    "username": "tyler_fight",
+    "hashedpassword": "azerty",
+    "firstName": "Tyler",
+    "lastName": "Durden"
+}
+###
+
