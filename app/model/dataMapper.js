@@ -1,7 +1,7 @@
 
 
 const dataMapper = {
-  async getDbData(){
+  async getData(){
     const query = {
       text: `SELECT * FROM media`
     };
