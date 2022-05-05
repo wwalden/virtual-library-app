@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE IF EXISTS "user", "mediatype", "list", "media", "review";
+DROP TABLE IF EXISTS "user", "mediatype", "list", "media", "review"; 
 
 COMMIT;

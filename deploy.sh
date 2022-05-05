@@ -1,6 +1,6 @@
 export PGUSER=arnaud
 export PGDATABASE=collectio
-
+ 
 
 # sqitch init collectio-scripts --engine pg
 # sqitch add createdb -n "db creation"
