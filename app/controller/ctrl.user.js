@@ -1,7 +1,7 @@
 const dataMapper = require("../model/dataMapper");
 
 
-const controller = {
+const userController = {
   async getDbData(req,res) {
     const results = await dataMapper.getData();
     res.send(results);
@@ -9,4 +9,4 @@ const controller = {
   }
 };
 
-module.exports = controller;
+module.exports = userController;

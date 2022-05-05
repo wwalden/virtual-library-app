@@ -3,10 +3,12 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
+const userRoutes = require('./app/routes/route.user');
+const mediaRoutes = require('./app/routes/route.media');
 
-const router = require('./app/router')
-app.use(router);
 
+app.use('/api', userRoutes);
+app.use('/api/user', mediaRoutes);
 
 
 
