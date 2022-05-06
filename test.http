@@ -1,14 +1,9 @@
+
+
+### GET ALL REVIEWS FROM ONE USER ### (based on userid in Token)
 GET http://localhost:4200/api/user/1/media HTTP/1.1
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
 
-###
-
-POST http://localhost:XXXX/ HTTP/1.1
-content-type: application/json
-
-{
-  "title": "Stalker"
-}
 
 ### REGISTER ###
 POST http://localhost:4200/api/register HTTP/1.1
@@ -33,8 +28,18 @@ content-type: application/json
 
 
 
-
-
 ### FOR TESTING ONLY - GET ALL USERS ###
 GET http://localhost:4200/api/register HTTP/1.1
 
+
+
+### NOT USED ###
+POST http://localhost:XXXX/ HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Stalker"
+}
+
+
+###

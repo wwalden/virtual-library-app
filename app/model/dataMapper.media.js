@@ -1,10 +1,11 @@
 const client = require("./dataClient");
 
 const mediaDataMapper = {
-  async getCollection(){
-    // query à modififer en triant sur un user spécifique
+  async getCollection(userid){
+    // renvoie l'ensemble des reviews d'un user
     const query = {
-      text: `SELECT * FROM media`
+      text: `SELECT * FROM review JOIN media ON review.mediaid = media.id JOIN mediatype ON media.mediaType = mediatype.id WHERE review.userid = $1`,
+      values: [userid],
     };
     const mediaList = await client.query(query);
     return mediaList;

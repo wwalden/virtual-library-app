@@ -3,9 +3,10 @@ const mediaDataMapper = require("../model/dataMapper.media");
 const mediaController = {
 
   async getCollection(req,res) {
-    // Pas encore OK: doit récupérer l'ID du user dans les params et le passer en argument au datamapper
-    const results = await mediaDataMapper.getCollection();
-    res.send(results);
+    // On récupère l'ID du user depuis les "locals", défini dans le middleware d'authentification
+    const userid = res.locals.user
+    const results = await mediaDataMapper.getCollection(userid);
+    res.send(results.rows);
   },
 
   async getOneMedia(req,res) {
