@@ -10,11 +10,23 @@ const userDataMapper = {
     return newUser;
   },
 
+  async findExistingUser(email) {
+    const query = {
+      text: `SELECT * FROM "user" WHERE email = $1`,
+      values: [email],
+    };
+    const existingUser = await client.query(query);
+    // à vérifier: format du retour si existe ou non?
+    console.log(existingUser)
+    return existingUser;
+
+  },
 
 
 
 
-  // For testing only
+
+  // For testing purpose only
   async getUserList(){
     // query à modififer en triant sur un user spécifique
     const query = {

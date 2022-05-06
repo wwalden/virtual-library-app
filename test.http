@@ -14,11 +14,11 @@ POST http://localhost:4200/api/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "tyler.durden@email.com",
-    "username": "tyler_fight",
-    "password": "AzeErty00?+",
-    "firstName": "Tyler",
-    "lastName": "Durden"
+    "email": "blibl.blibli@email.com",
+    "username": "bli",
+    "password": "aaaa",
+    "firstName": "bli",
+    "lastName": "bli"
 }
 
 ###
