@@ -1,4 +1,5 @@
 GET http://localhost:4200/api/user/1/media HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
 
 ###
 
@@ -9,18 +10,31 @@ content-type: application/json
   "title": "Stalker"
 }
 
-###
+### REGISTER ###
 POST http://localhost:4200/api/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "blibl.blibli@email.com",
-    "username": "bli",
-    "password": "aaaa",
-    "firstName": "bli",
-    "lastName": "bli"
+    "email": "anaku.arnaud@gmail.com",
+    "username": "anaku",
+    "password": "anaky",
+    "firstName": "Anaku",
+    "lastName": "Nougat"
 }
 
-###
+### LOGIN ###
+POST http://localhost:4200/api/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "captain.achab@email.com",
+  "password": "azerty"
+}
+
+
+
+
+
+### FOR TESTING ONLY - GET ALL USERS ###
 GET http://localhost:4200/api/register HTTP/1.1
 
