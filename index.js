@@ -18,9 +18,9 @@ app.use('/api', userRoutes);
 app.use('/api/user', mediaRoutes);
 
 
-// test welocme message
+// test welcome message
 app.get('/', (req, res) => {
-  res.send("hello world")
+  res.send("hello L & L ! This is Collectio API")
 })
 
 
