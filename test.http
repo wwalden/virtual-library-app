@@ -1,8 +1,19 @@
 
 
-### GET ALL REVIEWS FROM ONE USER ### (based on userid in Token)
-GET http://localhost:4200/api/user/1/media HTTP/1.1
+### OLD !! ###
+# GET http://localhost:4200/api/user/1/books HTTP/1.1
+# x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+
+
+### getLibrary ###
+GET http://localhost:4200/api/user/9/movie HTTP/1.1
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+
+
+### getBestRated ### 
+GET http://localhost:4200/api/movie/bestrated HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+
 
 
 ### REGISTER ###
@@ -23,7 +34,7 @@ content-type: application/json
 
 {
   "email": "captain.achab@email.com",
-  "password": "azedrythgfurty"
+  "password": "azerty"
 }
 
 

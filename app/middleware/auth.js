@@ -7,6 +7,7 @@ module.exports = (req, res, next) => {
     // On le vérifie et récupère le userID qu'il contient (on l'avait créé lors du login)
     const decodedToken = jwt.verify(token, `${process.env.TOKEN_KEY}`);;
     const userId = decodedToken.userId.toString();
+  // ??? faire une recherche du user, être sur qu'il existe dans la DB pour un check de sécurité ???
     // On stock le userID en res.locals, et on passe au controller suivant
     res.locals.user = userId;
     next();

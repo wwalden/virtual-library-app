@@ -5,12 +5,13 @@ const auth = require('../middleware/auth');
 
 
 //Media Routes
-// router.get("/:userid/collection", mediaController.getCollection)
-router.get("/:userid/:media", auth, mediaController.getCollection)
-router.get("/:userid/media/:mediaid", mediaController.getOneMedia) // ajouter le middleware auth
-router.post("/:userid/media/:mediaidid", mediaController.addOneMedia) // ajouter le middleware auth
-router.patch("/:userid/media/:mediaidid", mediaController.updateOneMedia) // ajouter le middleware auth
-router.delete("/:userid/media/:mediaidid", mediaController.deleteOneMedia) // ajouter le middleware auth
+router.get("/:library/bestrated", auth, mediaController.getBestRated) // ok
+// router.get("/:userid/collection", mediaController.getCollection) // To Do
+router.get("/user/:userid/:library/", auth, mediaController.getLibrary) // ok
+router.get("/user/:userid/:library/:mediaid", mediaController.getOneMedia) // ajouter le middleware auth // To Do
+router.post("/user/:userid/:library/:mediaidid", mediaController.addOneMedia) // ajouter le middleware auth // To Do
+router.patch("/user/:userid/:library/:mediaidid", mediaController.updateOneMedia) // ajouter le middleware auth // To Do
+router.delete("/user/:userid/:library/:mediaidid", mediaController.deleteOneMedia) // ajouter le middleware auth // To Do
 
 
 

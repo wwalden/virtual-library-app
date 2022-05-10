@@ -2,12 +2,26 @@ const mediaDataMapper = require("../model/dataMapper.media");
 
 const mediaController = {
 
-  async getCollection(req,res) {
+  async getLibrary(req,res) {
     // On récupère l'ID du user depuis les "locals", défini dans le middleware d'authentification
-    const userid = res.locals.user
-    const results = await mediaDataMapper.getCollection(userid);
+    const userid = res.locals.user;
+    const userInParams = req.params.userid;
+    if (userid !== userInParams) {
+      return res.status(401).json({ error: 'wrong user' });
+    }
+    const library = req.params.library;
+    const results = await mediaDataMapper.getLibrary(userid, library);
     res.send(results.rows);
   },
+
+  async getBestRated(req,res) {
+    const userid = res.locals.user;
+
+    const library = req.params.library;
+    const results = await mediaDataMapper.getBestRated(library);
+    res.send(results.rows);
+  },
+
 
   async getOneMedia(req,res) {
     res.send('Hello World, this is getOneMedia');

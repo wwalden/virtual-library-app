@@ -14,15 +14,13 @@ app.use((req, res, next) => {
 });
 
 
-app.use('/api', userRoutes);
-app.use('/api/user', mediaRoutes);
+app.use('/api', userRoutes, mediaRoutes);
 
 
 // test welcome message
 app.get('/', (req, res) => {
   res.send("hello L & L ! This is Collectio API")
 })
-
 
 
 const PORT = process.env.PORT || 4200;
