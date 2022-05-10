@@ -18,6 +18,12 @@ app.use('/api', userRoutes);
 app.use('/api/user', mediaRoutes);
 
 
+// test welocme message
+app.get('/', (req, res) => {
+  res.send("hello world")
+})
+
+
 
 const PORT = process.env.PORT || 4200;
 
