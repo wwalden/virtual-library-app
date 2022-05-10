@@ -10,11 +10,11 @@ POST http://localhost:4200/api/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "arnaud@gmail.com",
-    "username": "aaa",
+    "email": "test@gmail.com",
+    "username": "testboy",
     "password": "azerty",
-    "firstName": "arnaud",
-    "lastName": "blabla"
+    "firstName": "test",
+    "lastName": "boy"
 }
 
 ### LOGIN ###
