@@ -70,6 +70,6 @@ const passwordChecker = (password, username, firstName, lastName) => {
 
 
 // passwordChecker('mot de passe', 'prénom', 'nom', 'username')
-console.log(passwordChecker('miuo0rogiery§tga', 'michel', 'roger', 'jojo'))
+console.log(passwordChecker('miche7uiv%TGH', 'michel', 'roger', 'jojo'))
 
 
