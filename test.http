@@ -10,11 +10,11 @@ POST http://localhost:4200/api/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "test@gmail.com",
-    "username": "testboy",
+    "email": "marla@gmail.com",
+    "username": "marla",
     "password": "azerty",
-    "firstName": "test",
-    "lastName": "boy"
+    "firstName": "marla",
+    "lastName": "singer"
 }
 
 ### LOGIN ###
@@ -22,11 +22,37 @@ POST http://localhost:4200/api/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "captain.achab@email.com",
-  "password": "azedrythgfurty"
+  "email": "marla@gmail.com",
+  "password": "azerty"
 }
 
 
+### GET PROFILE INFO ###
+GET http://localhost:4200/api/profile/8 HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2NTIxOTA5MDgsImV4cCI6MTczODU5MDkwOH0.ogwtyklUq0IzkWLfxUaEnpwl0SBQ0Oa14CVbsQlkT3Q
+
+### DELETE PROFILE ###
+DELETE http://localhost:4200/api/profile/2 HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1MjI1OTcwMywiZXhwIjoxNzM4NjU5NzAzfQ.DJIihXFsvoq9rGN-TW1kQdpEBByeZZuVmJficZ5sI_0
+
+### UPDATE PROFILE ###
+PATCH http://localhost:4200/api/profile/17 HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE2NTIyNzg3OTQsImV4cCI6MTczODY3ODc5NH0.ftSf_19YJPP-M0jL48UU00FwmdnOvmmTZltZIsyLXhU
+content-type: application/json
+# Content-Length: 999
+
+{
+    "email": "marla@gmail.com",
+    "username": "marla",
+    "password": "azerty8",
+    "newpassword": "azerty10",
+    "firstName": "marla",
+    "lastName": "singer",
+    "gender" : "female",
+    "birthdaydate" : "10/02/1987",
+    "bio" : "Ma vie, mon oeuvre",
+    "pictureurl" : "www.picture.io"
+}
 
 ### FOR TESTING ONLY - GET ALL USERS ###
 GET http://localhost:4200/api/register HTTP/1.1
