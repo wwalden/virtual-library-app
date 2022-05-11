@@ -73,15 +73,80 @@ const userController = {
 
   // Controllers Not Yet coded:
   async getProfile(req,res) {
-    res.send('Hello World, this is getProfile');
+
+    const userId = res.locals.user
+ 
+    if(userId != req.params.id) {
+
+      return res.status(401).json({ error: 'incorrect userid' });
+    }
+
+      const results = await userDataMapper.getUserDetails(userId);
+      res.send(results);
+
+      
+  
+
+    
+    // check if req.params.id != userId + try catch
+    
   },
 
   async updateProfile(req,res) {
-    res.send('Hello World, this is updateProfile');
+    const userId = res.locals.user
+    
+    if(userId != req.params.id) {
+      
+      res.redirect('/login');
+      
+    }    
+    
+    const { email, username, password, newpassword, firstName, lastName, gender, birthdayDate, bio, pictureurl } = req.body;
+ 
+    console.log(username);
+
+    
+    const userInDb = await userDataMapper.getUserDetails(userId);
+    const user = userInDb.rows[0];
+
+
+    if (username.length >= 17 || username.length <= 4) {
+      return res.status(401).json({ error: 'invalid username (length must be: 5 - 16)' });
+    }
+    if (!EMAIL_REGEX.test(email)) {
+      return res.status(401).json({ error: 'invalid email' });
+    }
+
+    const passwordValidation = await bcrypt.compare(password, user.hashedpassword);
+    if (!passwordValidation) {
+      return res.status(401).json({ error: 'invalid password' });
+    }
+    
+    //if (!PASSWORD_REGEX.test(password)) {
+      //return res.status(401).json({ error: 'invalid password' });
+    //}
+
+    const newPassword = await bcrypt.hash(req.body.newpassword, 10);
+
+    const updatedProfile = await userDataMapper.updateUser(req.body, newPassword, userId);
+    res.send(updatedProfile);
+
+
   },
 
   async deleteProfile(req,res) {
-    res.send('Hello World, this is deleteProfile');
+    const userId = res.locals.user
+ 
+    if(userId != req.params.id) {
+
+      res.redirect('/login');
+    }
+
+      await userDataMapper.deleteUser(userId);
+
+      res.locals.user = 0
+
+      res.redirect('/');
   }
 
 };

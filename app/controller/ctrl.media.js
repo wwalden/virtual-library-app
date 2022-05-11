@@ -27,15 +27,15 @@ const mediaController = {
     res.send('Hello World, this is getOneMedia');
   },
 
-  async addOneMedia(req,res) {
+  async addOneReview(req,res) {
     res.send('Hello World, this is addOneMedia');
   },
 
-  async updateOneMedia(req,res) {
+  async updateOneReview(req,res) {
     res.send('Hello World, this is updateOneMedia');
   },
 
-  async deleteOneMedia(req,res) {
+  async deleteOneReview(req,res) {
     res.send('Hello World, this is deleteOneMedia');
   }
 
