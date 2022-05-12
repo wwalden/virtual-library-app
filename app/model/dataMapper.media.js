@@ -4,9 +4,11 @@ const mediaDataMapper = {
   async getLibrary(userid, library){
     // Renvoie toutes les reviews d'un user, pour une library (book/movie...) donnée
     const query = {
-      text: `SELECT * FROM review 
+      text: `
+              SELECT mediatype.mediatypename, review.userid, media.title, media.apimediaid, media.coverurl, list.listname, review.note, review.consumptiondate, review.comment FROM review 
               JOIN media ON review.mediaid = media.id 
-              JOIN mediatype ON media.mediaType = mediatype.id 
+              JOIN mediatype ON media.mediaType = mediatype.id
+              JOIN list ON review.listid = list.id
               WHERE review.userid = $1 
               AND mediatype.mediatypename = $2;
               `,
@@ -19,15 +21,13 @@ const mediaDataMapper = {
   async getBestRated(library){
     // renvoie les notes moyennes pour toutes les oeuvres (parmis toutes nos reviews) de la library (book/movie...) sélectionnée.
     // Renvoie les 10 premiers résultats. Triés pas 'Note Moyenne', décroissantes
-
-    // TO DO: arrondir le résultat au 0.5 !
     const query = {
       text: `
-            SELECT media.title, AVG(note) AS note_moyenne FROM review 
+            SELECT media.title, media.coverurl, media.apimediaid, ROUND(AVG(note)*2/2) AS note_moyenne FROM review 
               JOIN media ON review.mediaid = media.id
               JOIN mediatype ON media.mediaType = mediatype.id
               WHERE mediatype.mediatypename = $1
-              GROUP BY media.title
+              GROUP BY media.title, media.coverurl, media.apimediaid
               ORDER BY note_moyenne DESC
               LIMIT 10;
             `,
@@ -38,15 +38,14 @@ const mediaDataMapper = {
   },
 
   async getAverageRatingForOne(mediaid, library) {
-    // TO DO: arrondir le résultat au 0.5 !
     const query = {
       text: ` 
-        SELECT media.apimediaid, AVG(note) AS note_moyenne FROM review
+        SELECT media.title, media.coverurl, media.apimediaid, ROUND(AVG(note)*2/2) AS note_moyenne FROM review
         JOIN media ON review.mediaid = media.id
         JOIN mediatype ON media.mediatype = mediatype.id
         WHERE media.apimediaid = $1 
         AND mediatype.mediatypename = $2
-        GROUP BY media.apimediaid;
+        GROUP BY media.title, media.coverurl, media.apimediaid;
             `,
       values: [mediaid, library],
     };
@@ -58,9 +57,10 @@ const mediaDataMapper = {
   async getReviewDetails(userid, mediaid, library) {
     const query = {
       text: `
-      SELECT * FROM review
+      SELECT mediatype.mediatypename, review.userid, media.title, media.apimediaid, media.coverurl, list.listname, review.note, review.consumptiondate, review.comment  FROM review
       JOIN media on review.mediaid = media.id
       JOIN mediatype ON media.mediaType = mediatype.id
+      JOIN list ON review.listid = list.id
       WHERE media.apimediaid = $1
       AND review.userid = $2
 		  AND mediatype.mediatypename = $3

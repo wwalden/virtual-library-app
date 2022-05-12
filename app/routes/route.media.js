@@ -6,7 +6,7 @@ const checkSignIn = require('../middleware/checkSignIn');
 
 
 //Media Routes
-router.get("/:library/bestrated", auth, mediaController.getBestRated)
+router.get("/:library/bestrated", mediaController.getBestRated)
 router.get("/:library/", auth, mediaController.getLibrary)
 router.get("/:library/:mediaid", checkSignIn, mediaController.getOneMedia)
 //router.post("/user/:userid/:library/:mediaidid", mediaController.addOneReview) // ajouter le middleware auth // To Do
