@@ -27,22 +27,31 @@ const mediaController = {
       }
     } else {
       const results = await mediaDataMapper.getReviewDetails(userid, mediaid, library);
+      // voir si rows[0] = "", renvoyer un message clair pour préciser qu'il n'y a pas de review pour ce user/media
       res.send(results.rows);
     }
   },
 
 
 
-  async addOneMedia(req,res) {
-    res.send('Hello World, this is addOneMedia');
+  async addOneReview(req,res) {
+    // check si le Media existe déjà en DB
+    // Non? le créer
+    // Oui? créer uniquement la review
+    
+    
+    
+
   },
 
-  async updateOneMedia(req,res) {
-    res.send('Hello World, this is updateOneMedia');
+  async updateOneReview(req,res) {
+    // Patch dans la table review du user
+
   },
 
-  async deleteOneMedia(req,res) {
-    res.send('Hello World, this is deleteOneMedia');
+  async deleteOneReview(req,res) {
+    // Delete dans la table review du user
+
   }
 
 };

@@ -23,7 +23,7 @@ const mediaDataMapper = {
     // Renvoie les 10 premiers résultats. Triés pas 'Note Moyenne', décroissantes
     const query = {
       text: `
-            SELECT media.title, media.coverurl, media.apimediaid, ROUND(AVG(note)*2/2) AS note_moyenne FROM review 
+            SELECT media.title, media.coverurl, media.apimediaid, ROUND(AVG(note)*2)/2 AS note_moyenne FROM review 
               JOIN media ON review.mediaid = media.id
               JOIN mediatype ON media.mediaType = mediatype.id
               WHERE mediatype.mediatypename = $1
@@ -40,7 +40,7 @@ const mediaDataMapper = {
   async getAverageRatingForOne(mediaid, library) {
     const query = {
       text: ` 
-        SELECT media.title, media.coverurl, media.apimediaid, ROUND(AVG(note)*2/2) AS note_moyenne FROM review
+        SELECT media.title, media.coverurl, media.apimediaid, ROUND(AVG(note)*2)/2 AS note_moyenne FROM review
         JOIN media ON review.mediaid = media.id
         JOIN mediatype ON media.mediatype = mediatype.id
         WHERE media.apimediaid = $1 
