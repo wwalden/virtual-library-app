@@ -24,7 +24,8 @@ const mediaController = {
 
 
   async getOneMedia(req,res) {
-    res.send('Hello World, this is getOneMedia');
+    const userid = res.locals.user;
+    res.send(`Hello ${userid}, this is getOneMedia`);
   },
 
   async addOneMedia(req,res) {
