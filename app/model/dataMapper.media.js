@@ -31,13 +31,14 @@ const mediaDataMapper = {
               ORDER BY note_moyenne DESC
               LIMIT 10;
             `,
-            values: [library],
+      values: [library],
     };
     const mediaList = await client.query(query);
     return mediaList;
   },
 
   async getAverageRatingForOne(mediaid, library) {
+    // TO DO: arrondir le résultat au 0.5 !
     const query = {
       text: ` 
         SELECT media.apimediaid, AVG(note) AS note_moyenne FROM review
@@ -47,7 +48,7 @@ const mediaDataMapper = {
         AND mediatype.mediatypename = $2
         GROUP BY media.apimediaid;
             `,
-            values: [mediaid, library],
+      values: [mediaid, library],
     };
     const avgRating = await client.query(query);
     return avgRating;
@@ -60,15 +61,13 @@ const mediaDataMapper = {
       SELECT * FROM review
       JOIN media on review.mediaid = media.id
       JOIN mediatype ON media.mediaType = mediatype.id
-      WHERE media.id = $1
+      WHERE media.apimediaid = $1
       AND review.userid = $2
 		  AND mediatype.mediatypename = $3
       `
             ,
-            values: [mediaid ,userid, library],
+      values: [mediaid ,userid, library],
     };
-
-    console.log(`userid: ${userid}, mediaid: ${mediaid}, library: ${library}`)
     const reviewDetails = await client.query(query);
     return reviewDetails;
 

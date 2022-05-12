@@ -1,21 +1,12 @@
 
-
-### OLD !! ###
-# GET http://localhost:4200/api/user/1/books HTTP/1.1
-# x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
-
-
-
-GET http://localhost:4200/api/user/9/book/3452 HTTP/1.1
-//x-access-token: eyJhbGciOiJIUzI1NiIsInR5ctrfvyguhjgihuyvftygvucCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
-
 ### getLibrary ###
-GET http://localhost:4200/api/user/9/movie HTTP/1.1
+GET http://localhost:4200/api/movie HTTP/1.1
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
 
-### getReviewDetails ### 
-GET http://localhost:4200/api/user/9/video_game/7 HTTP/1.1
+### getOneMedia: getReviewDetails OR getAverageRatingForOne ### 
+GET http://localhost:4200/api/movie/bervbevrber HTTP/1.1
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+
 
 ### getBestRated ### 
 GET http://localhost:4200/api/series/bestrated HTTP/1.1
@@ -36,6 +27,7 @@ content-type: application/json
     "lastName": "boy"
 }
 
+
 ### LOGIN ###
 POST http://localhost:4200/api/login HTTP/1.1
 content-type: application/json
@@ -46,19 +38,6 @@ content-type: application/json
 }
 
 
-
 ### FOR TESTING ONLY - GET ALL USERS ###
 GET http://localhost:4200/api/register HTTP/1.1
 
-
-
-### NOT USED ###
-POST http://localhost:XXXX/ HTTP/1.1
-content-type: application/json
-
-{
-  "title": "Stalker"
-}
-
-
-###
