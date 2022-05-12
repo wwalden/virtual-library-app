@@ -23,8 +23,9 @@ const mediaController = {
   },
 
   async getOneMedia(req,res) {
-    const userid = res.locals.user;
-    const { mediaid, library } = req.params;
+    const userid = Number(res.locals.user);
+    const {library, mediaid } = req.params;
+    
 
     if (userid == 0) {
       const results = await mediaDataMapper.getAverageRatingForOne(mediaid, library);
@@ -35,6 +36,8 @@ const mediaController = {
     }
 
     const results = await mediaDataMapper.getReviewDetails(userid, mediaid, library);
+    console.log(typeof(mediaid))
+    console.log(typeof(userid))
     res.send(results.rows);
   },
 

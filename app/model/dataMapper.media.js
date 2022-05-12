@@ -4,7 +4,12 @@ const mediaDataMapper = {
   async getLibrary(userid, library){
     // Renvoie toutes les reviews d'un user, pour une library (book/movie...) donnée
     const query = {
-      text: `SELECT * FROM review JOIN media ON review.mediaid = media.id JOIN mediatype ON media.mediaType = mediatype.id WHERE review.userid = $1 AND mediatype.mediatypename = $2`,
+      text: `SELECT * FROM review 
+              JOIN media ON review.mediaid = media.id 
+              JOIN mediatype ON media.mediaType = mediatype.id 
+              WHERE review.userid = $1 
+              AND mediatype.mediatypename = $2;
+              `,
       values: [userid, library],
     };
     const mediaList = await client.query(query);
@@ -38,7 +43,8 @@ const mediaDataMapper = {
         SELECT media.apimediaid, AVG(note) AS note_moyenne FROM review
         JOIN media ON review.mediaid = media.id
         JOIN mediatype ON media.mediatype = mediatype.id
-        WHERE media.apimediaid = $1 AND mediatype.mediatypename = $2
+        WHERE media.apimediaid = $1 
+        AND mediatype.mediatypename = $2
         GROUP BY media.apimediaid;
             `,
             values: [mediaid, library],
@@ -51,14 +57,22 @@ const mediaDataMapper = {
   async getReviewDetails(userid, mediaid, library) {
     const query = {
       text: `
-      
-            `,
-            values: [userid, mediaid, library],
+      SELECT * FROM review
+      JOIN media on review.mediaid = media.id
+      JOIN mediatype ON media.mediaType = mediatype.id
+      WHERE media.id = $1
+      AND review.userid = $2
+		  AND mediatype.mediatypename = $3
+      `
+            ,
+            values: [mediaid ,userid, library],
     };
+
+    console.log(`userid: ${userid}, mediaid: ${mediaid}, library: ${library}`)
     const reviewDetails = await client.query(query);
     return reviewDetails;
 
-  }
+  },
 
 };
 
