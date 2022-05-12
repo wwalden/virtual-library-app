@@ -22,11 +22,23 @@ const mediaController = {
     res.send(results.rows);
   },
 
-
   async getOneMedia(req,res) {
     const userid = res.locals.user;
-    res.send(`Hello ${userid}, this is getOneMedia`);
+    const { mediaid, library } = req.params;
+
+    if (userid == 0) {
+      const results = await mediaDataMapper.getAverageRatingForOne(mediaid, library);
+      if(results.rows == []) {
+        res.send("no average rating");
+      }
+      res.send(results.rows);
+    }
+
+    const results = await mediaDataMapper.getReviewDetails(userid, mediaid, library);
+    res.send(results.rows);
   },
+
+
 
   async addOneMedia(req,res) {
     res.send('Hello World, this is addOneMedia');

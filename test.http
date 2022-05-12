@@ -7,7 +7,7 @@
 
 
 GET http://localhost:4200/api/user/9/book/3452 HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5ctrfvyguhjgihuyvftygvucCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+//x-access-token: eyJhbGciOiJIUzI1NiIsInR5ctrfvyguhjgihuyvftygvucCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
 
 ### getLibrary ###
 GET http://localhost:4200/api/user/9/movie HTTP/1.1
@@ -15,7 +15,7 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY
 
 
 ### getBestRated ### 
-GET http://localhost:4200/api/movie/bestrated HTTP/1.1
+GET http://localhost:4200/api/series/bestrated HTTP/1.1
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
 
 

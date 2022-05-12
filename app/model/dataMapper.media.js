@@ -14,6 +14,8 @@ const mediaDataMapper = {
   async getBestRated(library){
     // renvoie les notes moyennes pour toutes les oeuvres (parmis toutes nos reviews) de la library (book/movie...) sélectionnée.
     // Renvoie les 10 premiers résultats. Triés pas 'Note Moyenne', décroissantes
+
+    // TO DO: arrondir le résultat au 0.5 !
     const query = {
       text: `
             SELECT media.title, AVG(note) AS note_moyenne FROM review 
@@ -30,7 +32,33 @@ const mediaDataMapper = {
     return mediaList;
   },
 
+  async getAverageRatingForOne(mediaid, library) {
+    const query = {
+      text: ` 
+        SELECT media.apimediaid, AVG(note) AS note_moyenne FROM review
+        JOIN media ON review.mediaid = media.id
+        JOIN mediatype ON media.mediatype = mediatype.id
+        WHERE media.apimediaid = $1 AND mediatype.mediatypename = $2
+        GROUP BY media.apimediaid;
+            `,
+            values: [mediaid, library],
+    };
+    const avgRating = await client.query(query);
+    return avgRating;
 
+  },
+
+  async getReviewDetails(userid, mediaid, library) {
+    const query = {
+      text: `
+      
+            `,
+            values: [userid, mediaid, library],
+    };
+    const reviewDetails = await client.query(query);
+    return reviewDetails;
+
+  }
 
 };
 
