@@ -1,18 +1,20 @@
 
-
-### OLD !! ###
-# GET http://localhost:4200/api/user/1/books HTTP/1.1
-# x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
-
-
 ### getLibrary ###
-GET http://localhost:4200/api/user/9/movie HTTP/1.1
+GET http://localhost:4200/api/movie HTTP/1.1
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
 
+### getOneMedia: getReviewDetails OR getAverageRatingForOne ### 
+GET http://localhost:4200/api/video_game/wxtrygjhgbyub HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+
+
+### addOneReview
+POST http://localhost:4200/api/movie/bntrntrbthg HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
 
 ### getBestRated ### 
 GET http://localhost:4200/api/movie/bestrated HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+
 
 
 
@@ -28,6 +30,7 @@ content-type: application/json
     "lastName": "singer"
 }
 
+
 ### LOGIN ###
 POST http://localhost:4200/api/login HTTP/1.1
 content-type: application/json
@@ -38,6 +41,7 @@ content-type: application/json
 }
 
 
+<<<<<<< HEAD
 ### GET PROFILE INFO ###
 GET http://localhost:4200/api/profile/8 HTTP/1.1
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2NTIxOTA5MDgsImV4cCI6MTczODU5MDkwOH0.ogwtyklUq0IzkWLfxUaEnpwl0SBQ0Oa14CVbsQlkT3Q
@@ -65,18 +69,8 @@ content-type: application/json
     "pictureurl" : "www.picture.io"
 }
 
+=======
+>>>>>>> mediacrud
 ### FOR TESTING ONLY - GET ALL USERS ###
 GET http://localhost:4200/api/register HTTP/1.1
 
-
-
-### NOT USED ###
-POST http://localhost:XXXX/ HTTP/1.1
-content-type: application/json
-
-{
-  "title": "Stalker"
-}
-
-
-###

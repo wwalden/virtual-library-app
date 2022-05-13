@@ -4,7 +4,14 @@ const mediaDataMapper = {
   async getLibrary(userid, library){
     // Renvoie toutes les reviews d'un user, pour une library (book/movie...) donnée
     const query = {
-      text: `SELECT * FROM review JOIN media ON review.mediaid = media.id JOIN mediatype ON media.mediaType = mediatype.id WHERE review.userid = $1 AND mediatype.mediatypename = $2`,
+      text: `
+              SELECT mediatype.mediatypename, review.userid, media.title, media.apimediaid, media.coverurl, list.listname, review.note, review.consumptiondate, review.comment FROM review 
+              JOIN media ON review.mediaid = media.id 
+              JOIN mediatype ON media.mediaType = mediatype.id
+              JOIN list ON review.listid = list.id
+              WHERE review.userid = $1 
+              AND mediatype.mediatypename = $2;
+              `,
       values: [userid, library],
     };
     const mediaList = await client.query(query);
@@ -16,21 +23,94 @@ const mediaDataMapper = {
     // Renvoie les 10 premiers résultats. Triés pas 'Note Moyenne', décroissantes
     const query = {
       text: `
-            SELECT media.title, AVG(note) AS note_moyenne FROM review 
+            SELECT media.title, media.coverurl, media.apimediaid, ROUND(AVG(note)*2)/2 AS note_moyenne FROM review 
               JOIN media ON review.mediaid = media.id
               JOIN mediatype ON media.mediaType = mediatype.id
               WHERE mediatype.mediatypename = $1
-              GROUP BY media.title
+              GROUP BY media.title, media.coverurl, media.apimediaid
               ORDER BY note_moyenne DESC
               LIMIT 10;
             `,
-            values: [library],
+      values: [library],
     };
     const mediaList = await client.query(query);
     return mediaList;
   },
 
+  async getAverageRatingForOne(mediaid, library) {
+    const query = {
+      text: ` 
+        SELECT media.title, media.coverurl, media.apimediaid, ROUND(AVG(note)*2)/2 AS note_moyenne FROM review
+        JOIN media ON review.mediaid = media.id
+        JOIN mediatype ON media.mediatype = mediatype.id
+        WHERE media.apimediaid = $1 
+        AND mediatype.mediatypename = $2
+        GROUP BY media.title, media.coverurl, media.apimediaid;
+            `,
+      values: [mediaid, library],
+    };
+    const avgRating = await client.query(query);
+    return avgRating;
 
+  },
+
+  async getReviewDetails(userid, mediaid, library) {
+    const query = {
+      text: `
+      SELECT mediatype.mediatypename, review.userid, media.title, media.apimediaid, media.coverurl, list.listname, review.note, review.consumptiondate, review.comment  FROM review
+      JOIN media on review.mediaid = media.id
+      JOIN mediatype ON media.mediaType = mediatype.id
+      JOIN list ON review.listid = list.id
+      WHERE media.apimediaid = $1
+      AND review.userid = $2
+		  AND mediatype.mediatypename = $3
+      `
+            ,
+      values: [mediaid ,userid, library],
+    };
+    const reviewDetails = await client.query(query);
+    return reviewDetails;
+
+  },
+
+  async verifyMedia(mediaid, library) {
+    const query = {
+      text: `
+
+      SELECT apimediaid FROM media
+      JOIN mediatype ON media.mediaType = mediatype.id
+      WHERE apimediaid = $1
+      AND mediatypename = $2
+      
+      `
+            ,
+      values: [mediaid, library],
+    };
+    const reviewDetails = await client.query(query);   
+    
+    return reviewDetails;
+
+  },
+
+  async addReview(userid, mediaid, list) {
+
+    
+
+    const query = {
+      text: `
+
+      INSERT INTO public.review(
+        userid, mediaid, listid )
+        VALUES ($1, $2, $3);
+      
+      `
+            ,
+      values: [userid, mediaid, list],
+    };
+    const review = await client.query(query);
+    return review;
+
+  },
 
 };
 
