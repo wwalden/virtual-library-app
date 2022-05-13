@@ -73,6 +73,45 @@ const mediaDataMapper = {
 
   },
 
+  async verifyMedia(mediaid, library) {
+    const query = {
+      text: `
+
+      SELECT apimediaid FROM media
+      JOIN mediatype ON media.mediaType = mediatype.id
+      WHERE apimediaid = $1
+      AND mediatypename = $2
+      
+      `
+            ,
+      values: [mediaid, library],
+    };
+    const reviewDetails = await client.query(query);   
+    
+    return reviewDetails;
+
+  },
+
+  async addReview(userid, mediaid, list) {
+
+    
+
+    const query = {
+      text: `
+
+      INSERT INTO public.review(
+        userid, mediaid, listid )
+        VALUES ($1, $2, $3);
+      
+      `
+            ,
+      values: [userid, mediaid, list],
+    };
+    const review = await client.query(query);
+    return review;
+
+  },
+
 };
 
 module.exports = mediaDataMapper;

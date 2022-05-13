@@ -36,12 +36,31 @@ const mediaController = {
 
   async addOneReview(req,res) {
     // check si le Media existe déjà en DB
-    // Non? le créer
-    // Oui? créer uniquement la review
-    
-    
-    
+    const {library, apimediaid } = req.params;
+    const userid = res.locals.user
+    const { list, title, coverURL } = req.body
 
+    const result = await mediaDataMapper.verifyMedia(apimediaid, library)
+
+    if (result.rowCount == 0) {
+    // mediaDataMapper.addOneMedia(apimediaid, library, title, coverURL)
+      const addedMedia = await mediaDataMapper.addOneMedia(library, apimediaid, title, coverURL)
+    }
+
+    // mediaDataMapper.getMediaId(library, apimediaid)  --> Pour récupérer l'ID du Media dans notre DB
+    const mediaidResult = await mediaDataMapper.getMediaId(library, apimediaid);
+    const mediaid = mediaidResult.rows[0];
+
+    // mediaDataMapper.getListId(list)  --> Pour récupérer l'ID de la List (ou de la Library) dans notre DB 
+    const listResult = await mediaDataMapper.getListId(list)
+    const listid = listResult.rows[0];
+    
+    // mediaDataMapper.addReview(userid, mediaid, listid)
+    const newReview = await mediaDataMapper.addReview(userid, mediaid, listid)
+
+
+
+    res.send(newReview.rows);
   },
 
   async updateOneReview(req,res) {
