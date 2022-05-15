@@ -90,6 +90,62 @@ const mediaDataMapper = {
     
     return reviewDetails;
 
+  },  
+
+  async addOneMedia(library, APIMediaID, title, coverURL) {    
+
+    const query = {
+      text: `
+
+      INSERT INTO public.media(
+        apimediaid, title, coverurl, mediatype)
+        VALUES ($1, $2, $3, (
+          SELECT id FROM mediatype 
+          WHERE mediatypename = $4));              
+      `
+            ,
+      values: [APIMediaID, title, coverURL, library],
+    };
+    const newMedia = await client.query(query);
+    return newMedia;
+
+  },
+
+  async getMediaId(library, APIMediaID) {    
+
+    const query = {
+      text: `
+
+      SELECT media.id, media.title, mediatype.mediatypename FROM public.media
+      JOIN mediatype ON media.mediatype = mediatype.id
+      WHERE media.apimediaid = $1 
+      AND mediatype.mediatypename = $2
+      
+      `
+            ,
+      values: [library, APIMediaID],
+    };
+    const review = await client.query(query);
+    return review;
+
+  },
+
+  async getListId(library) {    
+
+    const query = {
+      text: `
+
+      INSERT INTO public.review(
+        userid, mediaid, listid )
+        VALUES ($1, $2, $3);
+      
+      `
+            ,
+      values: [userid, mediaid, list],
+    };
+    const review = await client.query(query);
+    return review;
+
   },
 
   async addReview(userid, mediaid, list) {
