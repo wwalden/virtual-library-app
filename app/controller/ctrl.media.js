@@ -70,8 +70,6 @@ const mediaController = {
 
     const deletedReview = await mediaDataMapper.deleteOneReview(userid, library, apimediaid)
     res.send(deletedReview.rows);
-
-
   }
 
 };

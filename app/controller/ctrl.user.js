@@ -71,7 +71,6 @@ const userController = {
 
 
 
-  // Controllers Not Yet coded:
   async getProfile(req,res) {
 
     const userId = res.locals.user
