@@ -17,9 +17,9 @@ app.use((req, res, next) => {
 app.use('/api', userRoutes, mediaRoutes);
 
 
-// test welcome message
+// API welcome message
 app.get('/', (req, res) => {
-  res.send("hello L & L ! This is Collectio API")
+  res.send("Welcome on Collectio API")
 })
 
 
@@ -30,5 +30,4 @@ app.listen(PORT, () => {
 });
 
 
-// this is a test
 

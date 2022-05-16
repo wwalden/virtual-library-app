@@ -7,7 +7,7 @@ sqitch init collectio-scripts --engine pg
 # sqitch add createuser -n "user table creation"
 sqitch add createtables -n "1.tables creation"
 sqitch add tablesseeding -n "2.tables seeding"
-sqitch add 3.altertable -n "foreign key amendment in media table"
+sqitch add 3.ForeignKeyConstraint -n "foreign key amendment in media table"
 
 
 # je revert
