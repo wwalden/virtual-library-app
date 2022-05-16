@@ -8,10 +8,10 @@ const checkSignIn = require('../middleware/checkSignIn');
 //Media Routes
 router.get("/:library/bestrated", mediaController.getBestRated)
 router.get("/:library/", auth, mediaController.getLibrary)
-router.get("/:library/:mediaid", checkSignIn, mediaController.getOneMedia)
-router.post("/:library/:mediaid", mediaController.addOneReview) // auth
-//router.patch("/:library/:mediaid", mediaController.updateOneReview) // ajouter le middleware auth // To Do
-//router.delete("/:library/:mediaid", mediaController.deleteOneReview) // ajouter le middleware auth // To Do
+router.get("/:library/:apimediaid", checkSignIn, mediaController.getOneMedia)
+router.post("/:library/:apimediaid", auth, mediaController.addOneReview) 
+router.patch("/:library/:apimediaid", auth, mediaController.updateOneReview) 
+router.delete("/:library/:apimediaid", auth, mediaController.deleteOneReview)
 
 
 

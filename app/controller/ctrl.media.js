@@ -46,30 +46,31 @@ const mediaController = {
     // mediaDataMapper.addOneMedia(apimediaid, library, title, coverURL)
       const addedMedia = await mediaDataMapper.addOneMedia(library, apimediaid, title, coverURL)
     }
-
-    // mediaDataMapper.getMediaId(library, apimediaid)  --> Pour récupérer l'ID du Media dans notre DB
-    const mediaidResult = await mediaDataMapper.getMediaId(library, apimediaid);
-    const mediaid = mediaidResult.rows[0];
-
-    // mediaDataMapper.getListId(list)  --> Pour récupérer l'ID de la List (ou de la Library) dans notre DB 
-    const listResult = await mediaDataMapper.getListId(list)
-    const listid = listResult.rows[0];
     
     // mediaDataMapper.addReview(userid, mediaid, listid)
-    const newReview = await mediaDataMapper.addReview(userid, mediaid, listid)
-
-
+    const newReview = await mediaDataMapper.addReview(userid, apimediaid, list, library)
 
     res.send(newReview.rows);
   },
 
   async updateOneReview(req,res) {
-    // Patch dans la table review du user
+    const {library, apimediaid } = req.params;
+    const userid = res.locals.user;
+    const { list, note, comment, consumptionDate } = req.body
+
+    const updatedReview = await mediaDataMapper.updateOneReview(userid, library, apimediaid, list, note, comment, consumptionDate)
+    res.send(updatedReview.rows);
 
   },
 
   async deleteOneReview(req,res) {
     // Delete dans la table review du user
+    const {library, apimediaid } = req.params;
+    const userid = res.locals.user;
+
+    const deletedReview = await mediaDataMapper.deleteOneReview(userid, library, apimediaid)
+    res.send(deletedReview.rows);
+
 
   }
 

@@ -9,11 +9,36 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY
 
 
 ### addOneReview
-POST http://localhost:4200/api/movie/bntrntrbthg HTTP/1.1
+POST http://localhost:4200/api/series/tt2442560 HTTP/1.1
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+content-type: application/json
+
+{
+    "list": "wishlist",
+    "title": "Peaky Blinders",
+    "coverURL": "https://imdb-api.com/images/original/MV5BMTkzNjEzMDEzMF5BMl5BanBnXkFtZTgwMDI0MjE4MjE@._V1_Ratio0.6751_AL_.jpg"
+  }
+
+
+### updateOneReview
+PATCH http://localhost:4200/api/series/tt2442560 HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+content-type: application/json
+
+{
+    "list": "favorite",
+    "note": 2,
+    "comment": "bif bof"    
+  }
+
+### deleteOneReview
+DELETE http://localhost:4200/api/series/tt2442560 HTTP/1.1
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+
 
 ### getBestRated ### 
 GET http://localhost:4200/api/movie/bestrated HTTP/1.1
+
 
 
 
@@ -41,7 +66,6 @@ content-type: application/json
 }
 
 
-<<<<<<< HEAD
 ### GET PROFILE INFO ###
 GET http://localhost:4200/api/profile/8 HTTP/1.1
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2NTIxOTA5MDgsImV4cCI6MTczODU5MDkwOH0.ogwtyklUq0IzkWLfxUaEnpwl0SBQ0Oa14CVbsQlkT3Q
@@ -69,8 +93,6 @@ content-type: application/json
     "pictureurl" : "www.picture.io"
 }
 
-=======
->>>>>>> mediacrud
 ### FOR TESTING ONLY - GET ALL USERS ###
 GET http://localhost:4200/api/register HTTP/1.1
 

@@ -123,21 +123,22 @@ const mediaDataMapper = {
       
       `
             ,
-      values: [library, APIMediaID],
+      values: [APIMediaID, library],
     };
     const review = await client.query(query);
     return review;
 
   },
 
-  async getListId(library) {    
+  async getListId(userid, library) {    
 
     const query = {
       text: `
 
-      INSERT INTO public.review(
-        userid, mediaid, listid )
-        VALUES ($1, $2, $3);
+      SELECT review.listid , media.title, mediatype.mediatypename FROM public.media
+      JOIN mediatype ON media.mediatype = mediatype.id
+      WHERE media.apimediaid = $1 
+      AND mediatype.mediatypename = $2
       
       `
             ,
@@ -148,20 +149,50 @@ const mediaDataMapper = {
 
   },
 
-  async addReview(userid, mediaid, list) {
-
-    
-
+  async addReview(userid, apimediaid, list, library) {
     const query = {
       text: `
-
-      INSERT INTO public.review(
-        userid, mediaid, listid )
-        VALUES ($1, $2, $3);
+      INSERT INTO public.review (
+        userid, mediaid, listid)
+        VALUES ($1,
+                (SELECT media.id FROM public.media
+                WHERE media.apimediaid = $2 AND media.mediatype = (SELECT mediatype.id FROM mediatype WHERE mediatype.mediatypename = $4)),
+                (SELECT list.id FROM public.list
+                WHERE list.listname = $3)
+                );
       
-      `
-            ,
-      values: [userid, mediaid, list],
+      `,
+      values: [userid, apimediaid, list, library],
+    };
+    const review = await client.query(query);
+    return review;
+
+  },
+
+  async updateOneReview(userid, library, apimediaid, list, note, comment, consumptionDate) {
+    const query = {
+      text: `
+            UPDATE review
+            SET listid = (SELECT id FROM list WHERE listname = $1), note = $2, comment = $3, consumptionDate = $4
+            WHERE userid = $5 AND mediaid = (SELECT media.id FROM public.media
+            WHERE media.apimediaid = $6 AND media.mediatype = (SELECT mediatype.id FROM mediatype WHERE mediatype.mediatypename = $7))
+      `,
+      values: [list, note, comment, consumptionDate, userid, apimediaid, library],
+    };
+    const review = await client.query(query);
+    return review;
+
+  },
+
+  async deleteOneReview(userid, library, apimediaid) {
+    const query = {
+      text: `
+      DELETE FROM public.review
+      WHERE review.userid = $1
+      AND mediaid = (SELECT media.id FROM public.media
+      WHERE media.apimediaid = $2 AND media.mediatype = (SELECT mediatype.id FROM mediatype WHERE mediatype.mediatypename = $3))
+      `,
+      values: [userid, apimediaid, library],
     };
     const review = await client.query(query);
     return review;
