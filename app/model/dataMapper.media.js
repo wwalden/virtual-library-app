@@ -76,27 +76,20 @@ const mediaDataMapper = {
   async verifyMedia(mediaid, library) {
     const query = {
       text: `
-
       SELECT apimediaid FROM media
       JOIN mediatype ON media.mediaType = mediatype.id
       WHERE apimediaid = $1
       AND mediatypename = $2
-      
-      `
-            ,
+      `,
       values: [mediaid, library],
     };
     const reviewDetails = await client.query(query);   
-    
     return reviewDetails;
-
   },  
 
   async addOneMedia(library, APIMediaID, title, coverURL) {    
-
     const query = {
       text: `
-
       INSERT INTO public.media(
         apimediaid, title, coverurl, mediatype)
         VALUES ($1, $2, $3, (
@@ -108,45 +101,6 @@ const mediaDataMapper = {
     };
     const newMedia = await client.query(query);
     return newMedia;
-
-  },
-
-  async getMediaId(library, APIMediaID) {    
-
-    const query = {
-      text: `
-
-      SELECT media.id, media.title, mediatype.mediatypename FROM public.media
-      JOIN mediatype ON media.mediatype = mediatype.id
-      WHERE media.apimediaid = $1 
-      AND mediatype.mediatypename = $2
-      
-      `
-            ,
-      values: [APIMediaID, library],
-    };
-    const review = await client.query(query);
-    return review;
-
-  },
-
-  async getListId(userid, library) {    
-
-    const query = {
-      text: `
-
-      SELECT review.listid , media.title, mediatype.mediatypename FROM public.media
-      JOIN mediatype ON media.mediatype = mediatype.id
-      WHERE media.apimediaid = $1 
-      AND mediatype.mediatypename = $2
-      
-      `
-            ,
-      values: [userid, mediaid, list],
-    };
-    const review = await client.query(query);
-    return review;
-
   },
 
   async addReview(userid, apimediaid, list, library) {
@@ -160,7 +114,6 @@ const mediaDataMapper = {
                 (SELECT list.id FROM public.list
                 WHERE list.listname = $3)
                 );
-      
       `,
       values: [userid, apimediaid, list, library],
     };
@@ -181,7 +134,6 @@ const mediaDataMapper = {
     };
     const review = await client.query(query);
     return review;
-
   },
 
   async deleteOneReview(userid, library, apimediaid) {
@@ -196,9 +148,7 @@ const mediaDataMapper = {
     };
     const review = await client.query(query);
     return review;
-
   },
-
 };
 
 module.exports = mediaDataMapper;
