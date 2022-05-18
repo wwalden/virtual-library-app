@@ -1,28 +1,26 @@
 
 ### getLibrary ###
 GET http://localhost:4200/api/movie HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjc3NzE2MSwiZXhwIjoxNzM5MTc3MTYxfQ.qBFTFlkJvKz8f106Axdtsot-Xx43gaf3lAP3Hch5dm4
 
 ### getOneMedia: getReviewDetails OR getAverageRatingForOne ### 
 GET http://localhost:4200/api/video_game/wxtrygjhgbyub HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
 
 
 ### addOneReview
-POST http://localhost:4200/api/series/tt2442560 HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+POST http://localhost:4200/api/book/SkRrngEACAAJ HTTP/1.1
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjc3NzE2MSwiZXhwIjoxNzM5MTc3MTYxfQ.qBFTFlkJvKz8f106Axdtsot-Xx43gaf3lAP3Hch5dm4
 content-type: application/json
 
 {
-    "list": "wishlist",
-    "title": "Peaky Blinders",
-    "coverURL": "https://imdb-api.com/images/original/MV5BMTkzNjEzMDEzMF5BMl5BanBnXkFtZTgwMDI0MjE4MjE@._V1_Ratio0.6751_AL_.jpg"
-  }
+    "list": "check"
+}
 
 
 ### updateOneReview
 PATCH http://localhost:4200/api/series/tt2442560 HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
 content-type: application/json
 
 {
@@ -33,7 +31,7 @@ content-type: application/json
 
 ### deleteOneReview
 DELETE http://localhost:4200/api/series/tt2442560 HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
 
 
 ### getBestRated ### 
@@ -68,15 +66,15 @@ content-type: application/json
 
 ### GET PROFILE INFO ###
 GET http://localhost:4200/api/profile/8 HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2NTIxOTA5MDgsImV4cCI6MTczODU5MDkwOH0.ogwtyklUq0IzkWLfxUaEnpwl0SBQ0Oa14CVbsQlkT3Q
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2NTIxOTA5MDgsImV4cCI6MTczODU5MDkwOH0.ogwtyklUq0IzkWLfxUaEnpwl0SBQ0Oa14CVbsQlkT3Q
 
 ### DELETE PROFILE ###
 DELETE http://localhost:4200/api/profile/2 HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1MjI1OTcwMywiZXhwIjoxNzM4NjU5NzAzfQ.DJIihXFsvoq9rGN-TW1kQdpEBByeZZuVmJficZ5sI_0
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1MjI1OTcwMywiZXhwIjoxNzM4NjU5NzAzfQ.DJIihXFsvoq9rGN-TW1kQdpEBByeZZuVmJficZ5sI_0
 
 ### UPDATE PROFILE ###
 PATCH http://localhost:4200/api/profile/17 HTTP/1.1
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE2NTIyNzg3OTQsImV4cCI6MTczODY3ODc5NH0.ftSf_19YJPP-M0jL48UU00FwmdnOvmmTZltZIsyLXhU
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE2NTIyNzg3OTQsImV4cCI6MTczODY3ODc5NH0.ftSf_19YJPP-M0jL48UU00FwmdnOvmmTZltZIsyLXhU
 content-type: application/json
 # Content-Length: 999
 
