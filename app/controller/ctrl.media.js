@@ -44,14 +44,21 @@ const mediaController = {
     if (result.rowCount == 0) {
       const addedMedia = await mediaDataMapper.addOneMedia(library, apimediaid, title, coverURL)
     }
-    const newReview = await mediaDataMapper.addReview(userid, apimediaid, list, library)
-    res.status(201).json({ message: 'Review successfully created' });
+    const results = await mediaDataMapper.getReviewDetails(userid, apimediaid, library);
+    if (results.rowCount > 0) {
+      res.status(403).json({ message: 'This Media is already in user Library yet' });
+    } else {
+      const newReview = await mediaDataMapper.addReview(userid, apimediaid, list, library)
+      res.status(201).json({ message: 'Review successfully created' });
+    }
   },
 
   async updateOneReview(req,res) {
+    // Vérifier si la review existe avant de l'update
     const { library, apimediaid } = req.params;
     const userid = res.locals.user;
     const { list, note, comment, consumptionDate } = req.body
+    // recréer un objet avec les anciens éléments
     const updatedReview = await mediaDataMapper.updateOneReview(userid, library, apimediaid, list, note, comment, consumptionDate)
     res.status(200).json({ message: 'Review is updated' });
   },
@@ -59,7 +66,13 @@ const mediaController = {
   async deleteOneReview(req,res) {
     const { library, apimediaid } = req.params;
     const userid = res.locals.user;
+    const results = await mediaDataMapper.getReviewDetails(userid, apimediaid, library);
+    // à revérifier
+    if (results.rowCount == 0) {
+      res.status(403).json({ message: 'The user has no review for this Media' });
+    } else {
     const deletedReview = await mediaDataMapper.deleteOneReview(userid, library, apimediaid)
+    }
     res.status(200).json({ message: 'The Review is now deleted from User Library' });
   }
 };

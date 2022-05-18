@@ -4,12 +4,12 @@ GET http://localhost:4200/api/movie HTTP/1.1
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
 
 ### getOneMedia: getReviewDetails OR getAverageRatingForOne ### 
-GET http://localhost:4200/api/movie/yikjzgrfttugcez HTTP/1.1
+GET http://localhost:4200/api/movie/tt1650048 HTTP/1.1
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
 
 
 ### addOneReview
-POST http://localhost:4200/api/book/SkRrngEACAAJ HTTP/1.1
+POST http://localhost:4200/api/movie/tt1650048 HTTP/1.1
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjc3NzE2MSwiZXhwIjoxNzM5MTc3MTYxfQ.qBFTFlkJvKz8f106Axdtsot-Xx43gaf3lAP3Hch5dm4
 content-type: application/json
 
@@ -19,19 +19,18 @@ content-type: application/json
 
 
 ### updateOneReview
-PATCH http://localhost:4200/api/series/tt2442560 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+PATCH http://localhost:4200/api/movie/tt1650048 HTTP/1.1
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg4Nzk2MiwiZXhwIjoxNzM5Mjg3OTYyfQ.9k7kROzN2_WZ71G8HnATKH-EGrM5TxQm8zZzbLO1QEA
 content-type: application/json
 
 {
     "list": "favorite",
-    "note": 2,
-    "comment": "bif bof"    
+    "note": 3    
   }
 
 ### deleteOneReview
-DELETE http://localhost:4200/api/series/tt2442560 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+DELETE http://localhost:4200/api/movie/tt1650048 HTTP/1.1
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjc3NzE2MSwiZXhwIjoxNzM5MTc3MTYxfQ.qBFTFlkJvKz8f106Axdtsot-Xx43gaf3lAP3Hch5dm4
 
 
 ### getBestRated ### 
@@ -59,8 +58,8 @@ POST http://localhost:4200/api/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "tony@gmail.com",
-  "password": "Azerty0?"
+  "email": "arnaud@gmail.com",
+  "password": "azerty"
 }
 
 
@@ -100,3 +99,7 @@ content-type: application/json
 ### FOR TESTING ONLY - GET ALL USERS ###
 GET http://localhost:4200/api/register HTTP/1.1
 
+
+
+  # "email": "tony@gmail.com",
+  # "password": "Azerty0?"

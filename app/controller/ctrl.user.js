@@ -11,7 +11,7 @@ const PASSWORD_REGEX  =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#?()'"§€£+=
   // Update Regex
   // Error handling
   // Only one review for each media per user
-  // Check addOneReview, updateOneReview
+  // updateOneReview à vérifier
 
 const userController = {
 
