@@ -6,14 +6,17 @@ const sessionDuration = 24 * 3600 * 1000; // durée d'un token en ms (1 journée
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const PASSWORD_REGEX = '';  // à définir
 
+// To Do //
+  // Cleaning code
+  // Update Regex
+  // Error handling
+  // Only one review for each media per user
+
+
 
 const userController = {
 
   async register(req,res) {
-    // ToDo: Ajouter une vérification que le user n'existe pas déjà!
-    // Choix de l'élément discriminant (email?). + Check dans le controller? en BDD? les 2?
-    // Gérer l'ajout de la photo de profil, date de naissance et bio
-
     const { email, username, password, firstName, lastName, gender, birthdayDate, bio } = req.body;
 
     if (!email || !username || !password || !firstName || !lastName) {
