@@ -1,11 +1,11 @@
 
 ### getLibrary ###
 GET http://localhost:4200/api/movie HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjc3NzE2MSwiZXhwIjoxNzM5MTc3MTYxfQ.qBFTFlkJvKz8f106Axdtsot-Xx43gaf3lAP3Hch5dm4
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
 
 ### getOneMedia: getReviewDetails OR getAverageRatingForOne ### 
-GET http://localhost:4200/api/video_game/wxtrygjhgbyub HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTY1MTgyOTM3NCwiZXhwIjoxNzM4MjI5Mzc0fQ.eaNbIVq_vjgC90dfN7tEYM2aX7aP5o9mhtwMX05Onk4
+GET http://localhost:4200/api/movie/yikjzgrfttugcez HTTP/1.1
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
 
 
 ### addOneReview
@@ -46,11 +46,11 @@ POST http://localhost:4200/api/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "marla@gmail.com",
-    "username": "marla",
-    "password": "azerty",
-    "firstName": "marla",
-    "lastName": "singer"
+    "email": "tony@gmail.com",
+    "username": "tony",
+    "password": "Azerty0?",
+    "firstName": "tony",
+    "lastName": "del tony"
 }
 
 
@@ -59,25 +59,31 @@ POST http://localhost:4200/api/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "arnaud@gmail.com",
-  "password": "azerty"
+  "email": "tony@gmail.com",
+  "password": "Azerty0?"
 }
 
 
 ### GET PROFILE INFO ###
 GET http://localhost:4200/api/profile/8 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2NTIxOTA5MDgsImV4cCI6MTczODU5MDkwOH0.ogwtyklUq0IzkWLfxUaEnpwl0SBQ0Oa14CVbsQlkT3Q
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY1Mjg4MzgzMSwiZXhwIjoxNzM5MjgzODMxfQ.T4a9Ct-ojHnHXCt7IbY2lxWuhHVH12Eth1yYkEQT3y4
 
 ### DELETE PROFILE ###
 DELETE http://localhost:4200/api/profile/2 HTTP/1.1
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1MjI1OTcwMywiZXhwIjoxNzM4NjU5NzAzfQ.DJIihXFsvoq9rGN-TW1kQdpEBByeZZuVmJficZ5sI_0
 
 ### UPDATE PROFILE ###
-PATCH http://localhost:4200/api/profile/17 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE3LCJpYXQiOjE2NTIyNzg3OTQsImV4cCI6MTczODY3ODc5NH0.ftSf_19YJPP-M0jL48UU00FwmdnOvmmTZltZIsyLXhU
+PATCH http://localhost:4200/api/profile/8 HTTP/1.1
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY1Mjg4MzgzMSwiZXhwIjoxNzM5MjgzODMxfQ.T4a9Ct-ojHnHXCt7IbY2lxWuhHVH12Eth1yYkEQT3y4
 content-type: application/json
-# Content-Length: 999
 
+{
+  "username": "little_toni"
+}
+
+
+
+#####
 {
     "email": "marla@gmail.com",
     "username": "marla",

@@ -16,10 +16,7 @@ const userDataMapper = {
       values: [email],
     };
     const existingUser = await client.query(query);
-    // à vérifier: format du retour si existe ou non?
-    console.log(existingUser)
     return existingUser;
-
   },
 
   async getUserDetails(id) {
@@ -28,10 +25,7 @@ const userDataMapper = {
       values: [id],
     };
     const userDetails = await client.query(query);
-    // à vérifier: format du retour si existe ou non?
-    
     return userDetails;
-
   },
 
   async deleteUser(id) {
@@ -42,39 +36,28 @@ const userDataMapper = {
       values: [id],
     };
     const userDetails = await client.query(query);
-    // à vérifier: format du retour si existe ou non?
-    
     return userDetails;
-
   },
 
   async updateUser(userObject, passwordhashed, id) {
-
     const query = {
       text: `UPDATE "user"
              SET email = $1, username = $2, hashedpassword = $3, firstname = $4, lastname = $5, gender = $6, birthdaydate = $7, bio = $8, pictureurl = $9
-             WHERE id = ${id} `,
-      values: [userObject.email, userObject.username, passwordhashed, userObject.firstName, userObject.lastName, userObject.bio, userObject.birthdayDate, userObject.bio, userObject.pictureurl],
+             WHERE id = $10`,
+      values: [userObject.email, userObject.username, passwordhashed, userObject.firstname, userObject.lastname, userObject.bio, userObject.birthdaydate, userObject.bio, userObject.pictureurl, id],
     };
     const updatedUser = await client.query(query);
     return updatedUser;
-
   },
 
   // For testing purpose only
   async getUserList(){
-    // query à modififer en triant sur un user spécifique
     const query = {
       text: `SELECT * FROM "user"`
     };
     const userList = await client.query(query);
     return userList;
   }
-
-
-
-
-
 };
 
 module.exports = userDataMapper;
