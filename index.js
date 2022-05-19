@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
+const handleError = require("./app/middleware/handleError");
+const APIError = require('./app/service/APIError');
+
 const userRoutes = require('./app/routes/route.user');
 const mediaRoutes = require('./app/routes/route.media');
 
@@ -15,6 +18,12 @@ app.use((req, res, next) => {
 
 
 app.use('/api', userRoutes, mediaRoutes);
+
+app.use(handleError);
+
+app.use((req,_,next) => {
+  throw new APIError("This url cannot be found", req.url, 404);
+});
 
 
 // API welcome message

@@ -60,7 +60,7 @@ const userController = {
       return res.status(403).json({ error: 'forbidden' });
     }
     const results = await userDataMapper.getUserDetails(userId);
-    const resultsObject = { ...results.rows[0]}
+    const resultsObject = { ...results.rows[0] }
     delete resultsObject.hashedpassword
     delete resultsObject.updatedat
     res.status(200).json(resultsObject);
