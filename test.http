@@ -39,7 +39,7 @@ GET http://localhost:4200/api/movie/bestrated HTTP/1.1
 
 
 ### HEROKU / getBestRated ### 
-GET https://collectio-app.herokuapp.com/movie/bestrated HTTP/1.1
+GET https://collectio-app.herokuapp.com/api/movie/bestrated HTTP/1.1
 
 
 

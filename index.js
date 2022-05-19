@@ -21,7 +21,13 @@ app.use('/api', userRoutes, mediaRoutes);
 
 app.use(handleError);
 
+/*
+NOT WORKING WITH HEROKU
 
+app.use((req,_,next) => {
+  throw new APIError("This url cannot be found", req.url, 404);
+});
+*/
 
 // API welcome message
 app.get('/', (req, res) => {
