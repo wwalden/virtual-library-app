@@ -56,105 +56,31 @@ const mediaController = {
   async updateOneReview(req,res) {
     const { library, apimediaid } = req.params;
     const userid = res.locals.user;
-    const { list, note, comment, consumptionDate } = req.body;
-    const results = await mediaDataMapper.getReviewDetails(userid, apimediaid, library);
-    if (results.rowCount == 0) {
-      res.status(403).json({ message: 'No review to update, please create review first' });
+    let { note }  = req.body;
+    note = parseFloat(note);
+    if (note > 5 || note < 0 || (note%1 != 0 && (note+0.5)%1 != 0)) {
+      res.status(400).json({ message: 'note should be between 0 and 5 (half-integers allowed)' });
     } else {
-      const currentReview = results.rows[0];
-      const reviewDetails =  {}
-      if (list && list != '') {
-        reviewDetails['list'] = list
+      const results = await mediaDataMapper.getReviewDetails(userid, apimediaid, library);
+      if (results.rowCount == 0) {
+        res.status(403).json({ message: 'No review to update, please create review first' });
       } else {
-        reviewDetails['list'] = currentReview.listname
-      }
-      if (note && note != '') {
-        reviewDetails['note'] = note
-      } else {
-        reviewDetails['note'] = currentReview.note
-      }
-      if (comment && comment != '') {
-        reviewDetails['comment'] = comment
-      } else {
-        reviewDetails['comment'] = currentReview.comment
-      }
-      if (consumptionDate && consumptionDate != '') {
-        reviewDetails['consumptionDate'] = consumptionDate
-      } else {
-        reviewDetails['consumptionDate'] = currentReview.consumptionDate
-      }
-      const updatedReview = await mediaDataMapper.updateOneReview(userid, library, apimediaid, reviewDetails)
-      if (updatedReview.rowCount == 1) {
-        res.status(200).json({ message: 'Review is updated' });
-      } else {
-        return res.status(400).json({ error: 'update failed' });
+        const reviewUpdateRequest = { ...req.body }
+        const reviewDetailsInDB = { ...results.rows[0]};
+        reviewDetailsInDB['list'] = reviewDetailsInDB['listname']
+        elementsToDelete = ['mediatypename', 'userid', 'title', 'apimediaid', 'coverurl', 'listname'];
+        elementsToDelete.forEach(element => delete reviewDetailsInDB[element]);    
+        reviewUpdateToSend = { ...reviewDetailsInDB, ...reviewUpdateRequest }
+        const updatedReview = await mediaDataMapper.updateOneReview(userid, library, apimediaid, reviewUpdateToSend)
+        if (updatedReview.rowCount == 1) {
+          res.status(200).json({ message: 'Review is updated' });
+        } else {
+          return res.status(400).json({ error: 'update failed' });
+        }
       }
     }
   },
-/*
 
-      const reviewUpdateRequest = { ...req.body }
-      const reviewDetailsInDB = { ...results.rows[0]};
-      console.log(reviewDetailsInDB)
-      reviewDetailsInDB['list'] = reviewDetailsInDB['listname']
-      console.log(reviewDetailsInDB)
-      ['mediatypename', 'userid', 'title', 'apimediaid', 'coverurl', 'listname'].forEach(element => delete reviewDetailsInDB[element]);    
-      reviewUpdateToSend = { ...reviewDetailsInDB, ...reviewUpdateRequest }
-      console.log(reviewDetailsInDB)
-      console.log(reviewUpdateRequest)
-      console.log(reviewUpdateToSend)
-
-  mediatypename: 'movie',
-  userid: 6,
-  title: 'Laurence Anyways',
-  apimediaid: 'tt1650048',
-  coverurl: 'https://imdb-api.com/images/original/MV5BMjAyNjQzODUyMV5BMl5BanBnXkFtZTcwNTExOTIxOQ@@._V1_Ratio0.6751_AL_.jpg',
-  listname: 'wishlist',
-  note: 5,
-  consumptiondate: null,
-  comment: 'génial'
-
-
-
-  async updateOneReview(req,res) {
-    const { library, apimediaid } = req.params;
-    const userid = res.locals.user;
-    const { list, note, comment, consumptionDate } = req.body;
-    const results = await mediaDataMapper.getReviewDetails(userid, apimediaid, library);
-    if (results.rowCount == 0) {
-      res.status(403).json({ message: 'No review to update, please create review first' });
-    } else {
-      const currentReview = results.rows[0];
-      const reviewDetails =  {}
-      if (list && list != '') {
-        reviewDetails['list'] = list
-      } else {
-        reviewDetails['list'] = currentReview.listname
-      }
-      if (note && note != '') {
-        reviewDetails['note'] = note
-      } else {
-        reviewDetails['note'] = currentReview.note
-      }
-      if (comment && comment != '') {
-        reviewDetails['comment'] = comment
-      } else {
-        reviewDetails['comment'] = currentReview.comment
-      }
-      if (consumptionDate && consumptionDate != '') {
-        reviewDetails['consumptionDate'] = consumptionDate
-      } else {
-        reviewDetails['consumptionDate'] = currentReview.consumptionDate
-      }
-      const updatedReview = await mediaDataMapper.updateOneReview(userid, library, apimediaid, reviewDetails)
-      if (updatedReview.rowCount == 1) {
-        res.status(200).json({ message: 'Review is updated' });
-      } else {
-        return res.status(400).json({ error: 'update failed' });
-      }
-    }
-  },
-*/
   async deleteOneReview(req,res) {
     const { library, apimediaid } = req.params;
     const userid = res.locals.user;

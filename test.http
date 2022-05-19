@@ -24,9 +24,9 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1
 content-type: application/json
 
 {
-    "list": "favorite",
-    "note": 4    
-    //"comment": "génial"
+    //"list": "wishlist",
+    "note": 3.5   
+    //"comment": "j'aime pas"
   }
 
 ### deleteOneReview

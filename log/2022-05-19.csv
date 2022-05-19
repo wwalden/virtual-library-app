@@ -12,3 +12,4 @@
 11:20:45,/api/movie/tt1650048,TypeError: Cannot read properties of undefined (reading 'listname')
 11:21:19,/api/movie/tt1650048,TypeError: Cannot read properties of undefined (reading 'listname')
 11:22:17,/api/movie/tt1650048,TypeError: Cannot read properties of undefined (reading 'listname')
+11:40:58,/api/movie/tt1650048,SyntaxError: Unexpected token } in JSON at position 23

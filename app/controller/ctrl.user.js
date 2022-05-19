@@ -80,7 +80,8 @@ const userController = {
     newPasswordInDB = userInDB.hashedpassword;
     const userInBody = { ...req.body };
     const updatedUser = { ...userInDB, ...userInBody };
-    ['id', 'hashedpassword', 'createdat', 'updatedat'].forEach(element => delete updatedUser[element]);
+    const elementsToDelete = ['id', 'hashedpassword', 'createdat', 'updatedat'];
+    elementsToDelete.forEach(element => delete updatedUser[element]);
     if (username && username.length >= 17 || username && username.length <= 2) {
       return res.status(400).json({ error: 'invalid username (length must be: 3 - 16)' });
     }
