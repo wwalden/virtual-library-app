@@ -117,7 +117,7 @@ const mediaDataMapper = {
 
   },
 
-  async updateOneReview(userid, library, apimediaid, list, note, comment, consumptionDate) {
+  async updateOneReview(userid, library, apimediaid, reviewDetails) {
     const query = {
       text: `
         UPDATE review
@@ -125,7 +125,7 @@ const mediaDataMapper = {
           WHERE userid = $5 AND mediaid = (SELECT media.id FROM public.media
           WHERE media.apimediaid = $6 AND media.mediatype = (SELECT mediatype.id FROM mediatype WHERE mediatype.mediatypename = $7));
         `,
-      values: [list, note, comment, consumptionDate, userid, apimediaid, library],
+      values: [reviewDetails.list, reviewDetails.note, reviewDetails.comment, reviewDetails.consumptionDate, userid, apimediaid, library],
     };
     const review = await client.query(query);
     return review;

@@ -25,7 +25,8 @@ content-type: application/json
 
 {
     "list": "favorite",
-    "note": 3    
+    "note": 4    
+    //"comment": "génial"
   }
 
 ### deleteOneReview
@@ -45,11 +46,11 @@ POST http://localhost:4200/api/register HTTP/1.1
 content-type: application/json
 
 {
-    "email": "tony@gmail.com",
-    "username": "tony",
+    "email": "arnaudnew@gmail.com",
+    "username": "arnaud_new",
     "password": "Azerty0?",
-    "firstName": "tony",
-    "lastName": "del tony"
+    "firstName": "arnaud",
+    "lastName": "grenoble"
 }
 
 

@@ -6,12 +6,6 @@ const sessionDuration = 24 * 3600 * 1000;
 const EMAIL_REGEX = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const PASSWORD_REGEX  =  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#?()'"§€£+=-_$%^&*]).{8,}$/;
 
-// To Do //
-  // Cleaning code
-  // Update Regex
-  // Error handling
-  // Only one review for each media per user
-  // updateOneReview à vérifier
 
 const userController = {
 
@@ -31,7 +25,11 @@ const userController = {
     }
     const hash = await bcrypt.hash(req.body.password, 10);
     const newUser = await userDataMapper.registerNewUser(req.body, hash);
-    res.status(201).json({ message: 'user created' });
+    if (newUser.rowCount == 1) {
+      res.status(201).json({ message: 'user created' });
+    } else {
+      return res.status(400).json({ error: 'bad request' });
+    }
   },
 
   async login(req,res) {
@@ -63,7 +61,11 @@ const userController = {
     const resultsObject = { ...results.rows[0] }
     delete resultsObject.hashedpassword
     delete resultsObject.updatedat
-    res.status(200).json(resultsObject);
+    if (results.rowCount == 1) {
+      res.status(200).json(resultsObject);
+    } else {
+      return res.status(400).json({ error: 'bad request' });
+    }
   },
 
   async updateProfile(req,res) {
@@ -99,7 +101,11 @@ const userController = {
       newPasswordInDB = await bcrypt.hash(newpassword, 10);
     }
     const updatedProfile = await userDataMapper.updateUser(updatedUser, newPasswordInDB, userId);
-    res.status(200).json({ message: 'profile updated' });
+    if (updatedProfile.rowCount == 1) {
+      res.status(200).json({ message: 'profile updated' });
+    } else {
+      return res.status(400).json({ error: 'bad request' });
+    }
   },
 
   async deleteProfile(req,res) {
@@ -107,9 +113,13 @@ const userController = {
     if (userId != req.params.id) {
       return res.status(403).json({ error: 'forbidden' });
     }
-    await userDataMapper.deleteUser(userId);
+    const deletedProfile = await userDataMapper.deleteUser(userId);
     res.locals.user = 0
-    return res.status(200).json({ message: 'user deleted' });
+    if (deletedProfile.rowCount == 1) {
+      return res.status(200).json({ message: 'user deleted' });
+    } else {
+      return res.status(400).json({ error: 'bad request' });
+    }
   }
 };
 
