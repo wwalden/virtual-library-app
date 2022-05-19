@@ -38,6 +38,8 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1
 GET http://localhost:4200/api/movie/bestrated HTTP/1.1
 
 
+### HEROKU / getBestRated ### 
+GET https://collectio-app.herokuapp.com/movie/bestrated HTTP/1.1
 
 
 
