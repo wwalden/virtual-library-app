@@ -29,9 +29,11 @@ const mediaController = {
     } else {
       const results = await mediaDataMapper.getReviewDetails(userid, apimediaid, library);
       if (results.rows == '') {
-        res.status(200).json({ message: 'This Media is not in user Library yet' });
+        const average = await mediaDataMapper.getAverageRatingForOne(apimediaid, library);
+        res.status(200).json({ message: 'This Media is not in user Library yet', avg_rating: average.rows });
       } else {
-        res.status(200).json(results.rows);
+        const average = await mediaDataMapper.getAverageRatingForOne(apimediaid, library);
+        res.status(200).json({ user_review_details: results.rows, avg_rating: average.rows});
       }
     }
   },
@@ -58,7 +60,7 @@ const mediaController = {
     const userid = res.locals.user;
     let { note }  = req.body;
     note = parseFloat(note);
-    if (note > 5 || note < 0 || (note%1 != 0 && (note+0.5)%1 != 0)) {
+    if (note && (note > 5 || note < 0 || (note%1 != 0 && (note+0.5)%1 != 0))) {
       res.status(400).json({ message: 'note should be between 0 and 5 (half-integers allowed)' });
     } else {
       const results = await mediaDataMapper.getReviewDetails(userid, apimediaid, library);

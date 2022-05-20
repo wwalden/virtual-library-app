@@ -5,7 +5,8 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1
 
 ### getOneMedia: getReviewDetails OR getAverageRatingForOne ### 
 GET http://localhost:4200/api/movie/tt1650048 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
+
+#authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2NTMwNTM0MjMsImV4cCI6MTczOTQ1MzQyM30.9CqejlufGvG8hygcrPgjSmjIpg_7evTP0TeRhHMiNAM
 
 
 ### addOneReview
@@ -24,9 +25,9 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1
 content-type: application/json
 
 {
-    //"list": "wishlist",
-    "note": 5,   
-    "comment": "j'adore"
+    "list": "wishlist",
+    //"note": 1,   
+    "comment": "je sais pas"
   }
 
 ### deleteOneReview
@@ -61,8 +62,8 @@ POST http://localhost:4200/api/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "arnaud@gmail.com",
-  "password": "azerty"
+  "email": "jeanbon@email.com",
+  "password": "Jeanbon88?"
 }
 
 
