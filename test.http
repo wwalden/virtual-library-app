@@ -4,8 +4,10 @@ GET http://localhost:4200/api/movie HTTP/1.1
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
 
 ### getOneMedia: getReviewDetails OR getAverageRatingForOne ### 
-GET http://localhost:4200/api/movie/tt1650048 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
+GET http://localhost:4200/api/movie/675353 HTTP/1.1
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg4MTY2NiwiZXhwIjoxNzM5MjgxNjY2fQ.P6p9SVHSFSnbOrUFfP1ftnsEU6yrcBoBR-iVAs2t8CQ
+ 
+ #authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
 
 
 ### addOneReview
@@ -14,19 +16,19 @@ authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1
 content-type: application/json
 
 {
-    "list": "check"
+    "list": "wishlist"
 }
 
 
 ### updateOneReview
-PATCH http://localhost:4200/api/movie/tt1650048 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg4Nzk2MiwiZXhwIjoxNzM5Mjg3OTYyfQ.9k7kROzN2_WZ71G8HnATKH-EGrM5TxQm8zZzbLO1QEA
+PATCH http://localhost:4200/api/movie/675353 HTTP/1.1
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg4MTY2NiwiZXhwIjoxNzM5MjgxNjY2fQ.P6p9SVHSFSnbOrUFfP1ftnsEU6yrcBoBR-iVAs2t8CQ
 content-type: application/json
 
 {
     //"list": "wishlist",
-    "note": 3.5   
-    //"comment": "j'aime pas"
+    "note": 3.5,   
+    "comment": "j'aime pas"
   }
 
 ### deleteOneReview

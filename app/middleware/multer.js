@@ -16,9 +16,11 @@ const storage = multer.diskStorage({
         const name = 'profPicUser' + userID;
         const extension = MIME_TYPES[file.mimetype];
         const fullName = name + Date.now() + '.' + extension
-        //res.locals.filename = fullName;
+        console.log(fullName)
+        res.locals.filename = fullName;
         callback(null, fullName);
     }
 });
+
 
 module.exports = multer({storage: storage}).single('image');
