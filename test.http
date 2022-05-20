@@ -4,14 +4,13 @@ GET http://localhost:4200/api/movie HTTP/1.1
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
 
 ### getOneMedia: getReviewDetails OR getAverageRatingForOne ### 
-GET http://localhost:4200/api/movie/tt1650048 HTTP/1.1
-
-#authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2NTMwNTM0MjMsImV4cCI6MTczOTQ1MzQyM30.9CqejlufGvG8hygcrPgjSmjIpg_7evTP0TeRhHMiNAM
+GET http://localhost:4200/api/movie/499701 HTTP/1.1
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1MzA1NDkyOCwiZXhwIjoxNzM5NDU0OTI4fQ.EqMkStJjn0n2nM-lMzZNcYrAd5KJbAKrCudPWk8alME
 
 
 ### addOneReview
 POST http://localhost:4200/api/movie/tt1650048 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjc3NzE2MSwiZXhwIjoxNzM5MTc3MTYxfQ.qBFTFlkJvKz8f106Axdtsot-Xx43gaf3lAP3Hch5dm4
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1MzA1NDkyOCwiZXhwIjoxNzM5NDU0OTI4fQ.EqMkStJjn0n2nM-lMzZNcYrAd5KJbAKrCudPWk8alME
 content-type: application/json
 
 {
@@ -20,19 +19,19 @@ content-type: application/json
 
 
 ### updateOneReview
-PATCH http://localhost:4200/api/movie/tt1650048 HTTP/1.1
+PATCH http://localhost:4200/api/movie/499701 HTTP/1.1
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg4Nzk2MiwiZXhwIjoxNzM5Mjg3OTYyfQ.9k7kROzN2_WZ71G8HnATKH-EGrM5TxQm8zZzbLO1QEA
 content-type: application/json
 
 {
-    "list": "wishlist",
-    //"note": 1,   
-    "comment": "je sais pas"
+    "list": "favorite",
+    "note": 5,
+    "comment": "j'adore Dora, c'est vraiment un film génial"
   }
 
 ### deleteOneReview
-DELETE http://localhost:4200/api/movie/tt1650048 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjc3NzE2MSwiZXhwIjoxNzM5MTc3MTYxfQ.qBFTFlkJvKz8f106Axdtsot-Xx43gaf3lAP3Hch5dm4
+DELETE http://localhost:4200/api/movie/499701 HTTP/1.1
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1MzA1NDkyOCwiZXhwIjoxNzM5NDU0OTI4fQ.EqMkStJjn0n2nM-lMzZNcYrAd5KJbAKrCudPWk8alME
 
 
 ### getBestRated ### 
@@ -62,8 +61,8 @@ POST http://localhost:4200/api/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "jeanbon@email.com",
-  "password": "Jeanbon88?"
+  "email": "arnaud@gmail.com",
+  "password": "azerty"
 }
 
 
