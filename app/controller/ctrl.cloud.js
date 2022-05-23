@@ -1,22 +1,31 @@
 const cloudinary = require('cloudinary').v2;
-
+const fs = require('fs');
+const userDataMapper = require("../model/dataMapper.user");
 
 const cloudController = {
   async uploadPicture(req, res) {
-    //console.log(res.locals.filename)
-    //console.log(file.filename)
-    //await cloudinary.uploader.upload("app/images/profPicUsertest1653035476546.jpg",
-    //function (req, res) {
-      //return res.send({message: "ok"})});
-      //console.log(req.file.filename)
-      await cloudinary.uploader.upload(`app/images/${req.file.filename}`,
+    try {
+      const userId = res.locals.user
+      if (userId != req.params.id) {
+        return res.status(403).json({ error: 'forbidden' });
+      }
+      const fileName = req.file.filename
+      await cloudinary.uploader.upload(`app/images/${fileName}`,
         function(error, result) {
-          console.log(result, error);
-        })
-      return res.send({
-        success: true, url: 'mediaurl'
-      })
-    //res.status(200).json({ message: 'image is uploaded'});
+          fs.unlink(`app/images/${fileName}`, async () => {
+            const uploadConfirmation = await userDataMapper.uploadProfilePicture(userId, result.url)
+            if (uploadConfirmation.rowCount == 1) {
+              return res.status(201).json({
+                success: true, url: result.url
+              });
+            }
+          });
+      });
+    } catch {
+      res.status(400).json({
+        error: new Error("upload failed, try again"),
+      });
+    }
   }
 };
 

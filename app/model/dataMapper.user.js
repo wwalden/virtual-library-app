@@ -50,6 +50,17 @@ const userDataMapper = {
     return updatedUser;
   },
 
+  async uploadProfilePicture(userId, pictureURL) {
+    const query = {
+      text: `UPDATE "user"
+             SET pictureurl = $2
+             WHERE id = $1`,
+      values: [userId, pictureURL],
+    };
+    const updatedUser = await client.query(query);
+    return updatedUser;
+  },
+
   // For testing purpose only
   async getUserList(){
     const query = {

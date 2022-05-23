@@ -69,8 +69,8 @@ content-type: application/json
 
 
 ### GET PROFILE INFO ###
-GET http://localhost:4200/api/profile/8 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY1Mjg4MzgzMSwiZXhwIjoxNzM5MjgzODMxfQ.T4a9Ct-ojHnHXCt7IbY2lxWuhHVH12Eth1yYkEQT3y4
+GET http://localhost:4200/api/profile/6 HTTP/1.1
+authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg4MTY2NiwiZXhwIjoxNzM5MjgxNjY2fQ.P6p9SVHSFSnbOrUFfP1ftnsEU6yrcBoBR-iVAs2t8CQ
 
 ### DELETE PROFILE ###
 DELETE http://localhost:4200/api/profile/2 HTTP/1.1
