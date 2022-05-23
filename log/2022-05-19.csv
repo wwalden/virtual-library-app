@@ -13,3 +13,11 @@
 11:21:19,/api/movie/tt1650048,TypeError: Cannot read properties of undefined (reading 'listname')
 11:22:17,/api/movie/tt1650048,TypeError: Cannot read properties of undefined (reading 'listname')
 11:40:58,/api/movie/tt1650048,SyntaxError: Unexpected token } in JSON at position 23
+20:41:45,/api/profile/12/upload,MulterError: Unexpected field
+20:42:43,/api/profile/12/upload,MulterError: Unexpected field
+20:43:20,/api/profile/12/upload,MulterError: Unexpected field
+20:46:44,/api/profile/12/upload,MulterError: Unexpected field
+20:49:57,/api/profile/12/upload,MulterError: Unexpected field
+20:50:45,/api/profile/12/upload,Error: ENOENT: no such file or directory, open 'images/Festi.jpeg.jpg'
+20:51:27,/api/profile/12/upload,Error: ENOENT: no such file or directory, open 'images/Festi.jpeg'
+20:55:28,/api/profile/12/upload,Error: ENOENT: no such file or directory, open 'images/Festi.jpeg'
