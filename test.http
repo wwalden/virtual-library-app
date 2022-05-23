@@ -67,7 +67,7 @@ content-type: application/json
 
 
 ### GET PROFILE INFO ###
-GET http://localhost:4200/api/profile/6 HTTP/1.1
+GET https://collectio-app.herokuapp.com/api/profile/6 HTTP/1.1
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg4MTY2NiwiZXhwIjoxNzM5MjgxNjY2fQ.P6p9SVHSFSnbOrUFfP1ftnsEU6yrcBoBR-iVAs2t8CQ
 
 ### DELETE PROFILE ###
@@ -98,11 +98,3 @@ content-type: application/json
     "bio" : "Ma vie, mon oeuvre",
     "pictureurl" : "www.picture.io"
 }
-
-### FOR TESTING ONLY - GET ALL USERS ###
-GET http://localhost:4200/api/register HTTP/1.1
-
-
-
-  # "email": "tony@gmail.com",
-  # "password": "Azerty0?"

@@ -12,6 +12,6 @@ router.post("/register", routerWrapper(userController.register));
 router.get("/profile/:id", auth, routerWrapper(userController.getProfile));
 router.patch("/profile/:id", auth, routerWrapper(userController.updateProfile));
 router.delete("/profile/:id", auth, routerWrapper(userController.deleteProfile));
-router.post("/profile/:id/upload", auth, multer, cloudController.uploadPicture);
+router.post("/profile/:id/upload", auth, multer, routerWrapper(cloudController.uploadPicture));
 
 module.exports = router;

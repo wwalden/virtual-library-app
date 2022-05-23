@@ -1,6 +1,5 @@
 const res = require('express/lib/response');
 const multer = require('multer');
-const userID = "test"
 
 const MIME_TYPES = {
     'image/jpg': 'jpg',
@@ -13,7 +12,7 @@ const storage = multer.diskStorage({
         callback(null, './app/images');
     },
     filename: (req, file, callback) => {
-        const name = 'profPicUser' + userID;
+        const name = 'profPicUser';
         const extension = MIME_TYPES[file.mimetype];
         const fullName = name + Date.now() + '.' + extension
         callback(null, fullName);

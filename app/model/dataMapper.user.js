@@ -60,15 +60,6 @@ const userDataMapper = {
     const updatedUser = await client.query(query);
     return updatedUser;
   },
-
-  // For testing purpose only
-  async getUserList(){
-    const query = {
-      text: `SELECT * FROM "user"`
-    };
-    const userList = await client.query(query);
-    return userList;
-  }
 };
 
 module.exports = userDataMapper;
