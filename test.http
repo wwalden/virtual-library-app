@@ -4,15 +4,8 @@ GET http://localhost:4200/api/movie HTTP/1.1
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
 
 ### getOneMedia: getReviewDetails OR getAverageRatingForOne ### 
-<<<<<<< HEAD
 GET http://localhost:4200/api/movie/499701 HTTP/1.1
 authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1MzA1NDkyOCwiZXhwIjoxNzM5NDU0OTI4fQ.EqMkStJjn0n2nM-lMzZNcYrAd5KJbAKrCudPWk8alME
-=======
-GET http://localhost:4200/api/movie/675353 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg4MTY2NiwiZXhwIjoxNzM5MjgxNjY2fQ.P6p9SVHSFSnbOrUFfP1ftnsEU6yrcBoBR-iVAs2t8CQ
- 
- #authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
->>>>>>> imageupload
 
 
 ### addOneReview
