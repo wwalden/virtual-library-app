@@ -8,7 +8,8 @@ const cloudController = {
     //await cloudinary.uploader.upload("app/images/profPicUsertest1653035476546.jpg",
     //function (req, res) {
       //return res.send({message: "ok"})});
-      await cloudinary.uploader.upload("app/images/profPicUsertest1653305531122.jpg",
+      //console.log(req.file.filename)
+      await cloudinary.uploader.upload(`app/images/${req.file.filename}`,
         function(error, result) {
           console.log(result, error);
         })
