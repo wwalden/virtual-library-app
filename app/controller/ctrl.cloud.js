@@ -12,6 +12,7 @@ const cloudController = {
       } else {
         const fileName = req.file.filename;
         const imgPath = path.join(__dirname, '../images/', fileName);
+        console.log(imgPath)
         await cloudinary.uploader.upload(imgPath,
           function(error, result) {
             fs.unlink(path.join(__dirname, '../images/', fileName), async () => {
