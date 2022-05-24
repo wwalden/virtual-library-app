@@ -5,17 +5,17 @@ const userDataMapper = require("../model/dataMapper.user");
 
 const cloudController = {
   async uploadPicture(req, res) {
+    
     try {
       const userId = res.locals.user;
       if (userId != req.params.id) {
         return res.status(403).json({ error: 'forbidden' });
       } else {
         const fileName = req.file.filename;
-        const imgPath = path.join(__dirname, '../images/', fileName);
-        console.log(imgPath)
+        const imgPath = path.join(__dirname, '../../images/', fileName);
         await cloudinary.uploader.upload(imgPath,
           function(error, result) {
-            fs.unlink(path.join(__dirname, '../images/', fileName), async () => {
+            fs.unlink(path.join(__dirname, '../../images/', fileName), async () => {
               const uploadConfirmation = await userDataMapper.uploadProfilePicture(userId, result.url)
               if (uploadConfirmation.rowCount == 1) {
                 return res.status(201).json({

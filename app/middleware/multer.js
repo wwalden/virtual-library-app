@@ -1,6 +1,5 @@
 const res = require('express/lib/response');
 const multer = require('multer');
-const path = require("path");
 
 const MIME_TYPES = {
     'image/jpg': 'jpg',
@@ -10,9 +9,8 @@ const MIME_TYPES = {
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-      //const imgPath = path.join(__dirname, '../images/');
-      //console.log(imgPath)
-      callback(null, 'images');
+      const path = 'images';
+      callback(null, path);
     },
     filename: (req, file, callback) => {
         const name = 'profPicUser';
