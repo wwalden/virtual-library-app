@@ -1,4 +1,6 @@
 node_modules
 userPasswordReminder.md 
 .env
+test.http
+
 
