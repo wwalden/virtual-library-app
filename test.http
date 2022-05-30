@@ -1,16 +1,16 @@
 
 ### getLibrary ###
 GET http://localhost:4200/api/movie HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg3NTk4MywiZXhwIjoxNzM5Mjc1OTgzfQ.vLXD-ttX0kDgo450ixHcLs4_DfVBkdhiRCmBZ5vnzGE
+authorization: 
 
 ### getOneMedia: getReviewDetails OR getAverageRatingForOne ### 
 GET http://localhost:4200/api/movie/499701 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1MzA1NDkyOCwiZXhwIjoxNzM5NDU0OTI4fQ.EqMkStJjn0n2nM-lMzZNcYrAd5KJbAKrCudPWk8alME
+authorization: 
 
 
 ### addOneReview
 POST http://localhost:4200/api/movie/tt1650048 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1MzA1NDkyOCwiZXhwIjoxNzM5NDU0OTI4fQ.EqMkStJjn0n2nM-lMzZNcYrAd5KJbAKrCudPWk8alME
+authorization: 
 content-type: application/json
 
 {
@@ -20,7 +20,7 @@ content-type: application/json
 
 ### updateOneReview
 PATCH http://localhost:4200/api/movie/675353 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg4MTY2NiwiZXhwIjoxNzM5MjgxNjY2fQ.P6p9SVHSFSnbOrUFfP1ftnsEU6yrcBoBR-iVAs2t8CQ
+authorization: 
 content-type: application/json
 
 {
@@ -31,7 +31,7 @@ content-type: application/json
 
 ### deleteOneReview
 DELETE http://localhost:4200/api/movie/499701 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1MzA1NDkyOCwiZXhwIjoxNzM5NDU0OTI4fQ.EqMkStJjn0n2nM-lMzZNcYrAd5KJbAKrCudPWk8alME
+authorization: 
 
 
 ### getBestRated ### 
@@ -50,7 +50,7 @@ content-type: application/json
 {
     "email": "arnaudnew@gmail.com",
     "username": "arnaud_new",
-    "password": "Azerty0?",
+    "password": "",
     "firstName": "arnaud",
     "lastName": "grenoble"
 }
@@ -62,21 +62,21 @@ content-type: application/json
 
 {
   "email": "arnaud@gmail.com",
-  "password": "azerty"
+  "password": ""
 }
 
 
 ### GET PROFILE INFO ###
 GET https://collectio-app.herokuapp.com/api/profile/6 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjYsImlhdCI6MTY1Mjg4MTY2NiwiZXhwIjoxNzM5MjgxNjY2fQ.P6p9SVHSFSnbOrUFfP1ftnsEU6yrcBoBR-iVAs2t8CQ
+authorization: 
 
 ### DELETE PROFILE ###
 DELETE http://localhost:4200/api/profile/2 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1MjI1OTcwMywiZXhwIjoxNzM4NjU5NzAzfQ.DJIihXFsvoq9rGN-TW1kQdpEBByeZZuVmJficZ5sI_0
+authorization: 
 
 ### UPDATE PROFILE ###
 PATCH http://localhost:4200/api/profile/8 HTTP/1.1
-authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlhdCI6MTY1Mjg4MzgzMSwiZXhwIjoxNzM5MjgzODMxfQ.T4a9Ct-ojHnHXCt7IbY2lxWuhHVH12Eth1yYkEQT3y4
+authorization: 
 content-type: application/json
 
 {
@@ -89,8 +89,8 @@ content-type: application/json
 {
     "email": "marla@gmail.com",
     "username": "marla",
-    "password": "azerty8",
-    "newpassword": "azerty10",
+    "password": "",
+    "newpassword": "",
     "firstName": "marla",
     "lastName": "singer",
     "gender" : "female",
